@@ -180,6 +180,12 @@ img{max-width:100%;display:block}
 
 /* About */
 .about-hero{padding:clamp(56px,9vw,128px) 0 clamp(40px,6vw,80px)}
+.about-hero{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end}
+.ah-text{grid-column:1 / span 7}
+.portrait{grid-column:9 / span 4;margin:0;position:relative}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#E8E8E4}
+.portrait::after{content:"";position:absolute;left:-12px;bottom:-12px;width:42%;height:3px;background:var(--blue)}
+@media (max-width:900px){.ah-text,.portrait{grid-column:1 / -1}.portrait{max-width:340px;order:-1}}
 .about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
 .about-grid .side{grid-column:1 / span 4}
 .about-grid .main{grid-column:6 / span 7}
@@ -576,8 +582,11 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
 <section class="view" data-view="/about" data-title="About" aria-label="About">
   <div class="wrap">
     <div class="about-hero">
-      <h1 class="display reveal"><span>Hi, I’m Ram.</span></h1>
-      <p class="lede" style="margin-top:28px">Lakshmi Narayana on paper. Over three years designing B2C, B2B and SaaS products. Now designing AI automation for business schools at EDTEX, after building generative AI tools for enterprise teams at TensorGo.</p>
+      <div class="ah-text">
+        <h1 class="display reveal"><span>Hi, I’m Ram.</span></h1>
+        <p class="lede" style="margin-top:28px">Lakshmi Narayana on paper. Over three years designing B2C, B2B and SaaS products. Now designing AI automation for business schools at EDTEX, after building generative AI tools for enterprise teams at TensorGo.</p>
+      </div>
+      <figure class="portrait"><img src="ram.jpg" width="800" height="1000" alt="Portrait of Ram, smiling, in a navy blazer" loading="lazy" decoding="async"></figure>
     </div>
 
     <div class="block about-grid">
