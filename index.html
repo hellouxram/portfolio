@@ -7,7 +7,7 @@
 <meta name="description" content="Lakshmi Narayana (Ram) is a product designer in Hyderabad who designs generative AI and B2B SaaS products end to end.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Geist:wght@400;500;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F4F4F1;
@@ -337,6 +337,54 @@ img{max-width:100%;display:block}
 .mock .tt-btn:hover{background:var(--blue)}
 .mock .tt-btn:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
+/* TensorGo page: dark, agentic treatment inspired by tensorgo.com */
+.view.tg{--paper:#000;--ink:#ECECEA;--graphite:#9C9EA6;--rule:#26272C;--blue:#6A74FF;--blue-pale:#1A1E4A;--serif:"Outfit","Geist",Arial,sans-serif;background:#000;color:var(--ink)}
+.tg .display{font-weight:300;letter-spacing:-.04em;line-height:1}
+.tg .h2,.tg .h3,.tg .next strong{font-weight:400;letter-spacing:-.02em}
+.tg .plate{background:#0B0C10;border:1px solid var(--rule)}
+.tg .facts{border-top-color:var(--rule)}
+.tg-note{margin-top:16px;font-size:15px;color:var(--graphite)}
+.tg .mock{--mk-line:#2A2C33;background:#0B0C10;border:1px solid var(--rule)}
+.tg .mock-bar{border-bottom:1px solid var(--rule);align-items:center}
+.tg .mock-bar i{border-color:#4A4C55}
+.tg .redacted b{background:#3A3C44}
+.tg .btn{background:var(--ink);color:#000}
+body[data-view="/work/tensorgo"]{background:#000}
+body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#ECECEA}
+/* agent mock */
+.agent{max-width:760px}
+.ag-live{margin-left:auto;font-size:13px;font-weight:600;color:var(--blue);display:inline-flex;align-items:center;gap:8px}
+.ag-live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);animation:pulse 2.4s infinite}
+.ag-grid{display:grid;grid-template-columns:1.25fr 1fr;min-height:280px}
+.ag-stage{display:grid;grid-template-rows:1fr 1fr;gap:10px;padding:14px;border-right:1px solid var(--rule)}
+.tile{position:relative;background:#14161C;border-radius:10px;display:grid;place-items:center;min-height:110px}
+.tile .face{width:52px;height:52px;border-radius:50%;background:#2A2C33;position:relative}
+.tile.ai .face{background:linear-gradient(135deg,#6A74FF,#2633E8)}
+.tile .ring{position:absolute;inset:-6px;border-radius:50%;border:2px solid #6A74FF;opacity:0;transform:scale(.9);transition:opacity .4s,transform .4s}
+.agent[data-s="1"] .ring,.agent[data-s="2"] .ring{opacity:1;animation:speak 1.4s ease-in-out infinite}
+@keyframes speak{50%{transform:scale(1.08);opacity:.4}}
+.tile .nm{position:absolute;left:10px;bottom:8px;font-size:12px;color:var(--graphite)}
+.ag-panel{position:relative;padding:16px}
+.ag-p{position:absolute;inset:16px;opacity:0;transform:translateY(8px);transition:opacity .35s,transform .45s var(--ease);pointer-events:none}
+.ag-p.on{opacity:1;transform:none}
+.ag-p .ln.hl{background:var(--blue)}
+.ck{font-size:14px;padding:6px 0 6px 24px;position:relative}
+.ck::before{content:"";position:absolute;left:0;top:10px;width:12px;height:7px;border:solid var(--blue);border-width:0 0 2px 2px;transform:rotate(-45deg)}
+.ck.pending{color:var(--graphite)}
+.ck.pending::before{border:2px solid var(--graphite);border-right-color:transparent;border-radius:50%;width:10px;height:10px;top:8px;transform:none;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.nudge{border:1px solid var(--blue);background:var(--blue-pale);padding:12px;border-radius:8px;margin-bottom:10px}
+.bar-row{display:grid;grid-template-columns:110px 1fr;align-items:center;gap:10px;font-size:13px;margin:10px 0}
+.bar-row b{height:6px;background:var(--mk-line);position:relative;border-radius:3px;overflow:hidden}
+.bar-row b::after{content:"";position:absolute;inset:0;width:var(--w);background:var(--blue);transform-origin:left;transform:scaleX(0);transition:transform .8s var(--ease)}
+.agent[data-s="3"] .bar-row b::after{transform:scaleX(1)}
+.ag-steps{display:flex;border-top:1px solid var(--rule)}
+.mock .ag-steps button{all:unset;flex:1;text-align:center;padding:12px 6px;font-size:14px;font-weight:500;cursor:pointer;color:var(--graphite);border-right:1px solid var(--rule)}
+.mock .ag-steps button:last-child{border-right:0}
+.mock .ag-steps button[aria-pressed="true"]{color:var(--ink);box-shadow:inset 0 -2px 0 var(--blue)}
+.mock .ag-steps button:focus-visible{outline:2px solid var(--blue);outline-offset:-2px}
+@media (max-width:900px){.ag-grid{grid-template-columns:1fr}.ag-stage{border-right:0;border-bottom:1px solid var(--rule);grid-template-columns:1fr 1fr;grid-template-rows:none}.ag-panel{min-height:200px}}
+
 /* Locked / redacted "full story" */
 .locked{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;padding:clamp(56px,8vw,112px) 0;border-bottom:1px solid var(--rule)}
 .locked-copy{grid-column:1 / span 6}
@@ -448,7 +496,7 @@ img{max-width:100%;display:block}
       </a></li>
       <li><a href="#/work/tensorgo" data-pv="tensorgo">
         <span class="title">TensorGo</span>
-        <span class="desc">Enterprise generative AI products across PaaS and SaaS, from meeting intelligence to AI interviews.</span>
+        <span class="desc">Agentic UX for AI teammates that join calls to interview, coach and report.</span>
         <span class="go">My Contributions</span>
       </a></li>
       <li><a href="#/work/gugla" data-pv="gugla">
@@ -656,37 +704,54 @@ img{max-width:100%;display:block}
 </article>
 
 <!-- ============ CASE STUDY: TENSORGO ============ -->
-<article class="view" data-view="/work/tensorgo" data-title="TensorGo" aria-label="TensorGo case study">
+<article class="view tg" data-view="/work/tensorgo" data-title="TensorGo" aria-label="TensorGo case study">
   <div class="wrap">
     <div class="cs-hero">
       <a class="back" href="#/">Back to all work</a>
-      <h1 class="display">Designing generative AI products for enterprise teams</h1>
-      <p class="lede" style="margin-top:28px">I led design for a family of AI products that help companies make sense of their meetings, interviews and sales calls.</p>
+      <h1 class="display">Designing AI teammates that join the meeting</h1>
+      <p class="lede" style="margin-top:28px">TensorGo’s HumAIns are AI teammates that join Zoom, Meet and Teams calls to interview candidates, coach sales teams and turn meetings into decisions. I designed how people set them up, work alongside them and trust what they deliver.</p>
       <dl class="facts">
         <div><dt>Company</dt><dd>TensorGo</dd></div>
         <div><dt>Role</dt><dd>Product designer</dd></div>
         <div><dt>Timeline</dt><dd>Feb 2024 to Sep 2025</dd></div>
-        <div><dt>Model</dt><dd>PaaS and SaaS</dd></div>
+        <div><dt>Focus</dt><dd>Agentic AI, B2B SaaS</dd></div>
       </dl>
       <figure class="plate" aria-label="Animated concept visual: a conversation waveform with highlighted moments">
         <canvas data-plate="wave" aria-hidden="true"></canvas>
       </figure>
+      <p class="tg-note">TensorGo is a Gartner Cool Vendor in AI and won Oracle’s GenAI Innovation Award 2025 (JAPAC).</p>
     </div>
 
     <section class="cs-sec">
       <h2 class="h3">The challenge</h2>
       <div class="body prose">
-        <p>Enterprise clients in very different industries, each with their own data and workflows, all relying on AI they need to trust. My job was to make advanced models feel simple to the business people who use them every day.</p>
+        <p>When software acts on its own, the design questions change. When should the AI speak, and when should it stay quiet? How does a recruiter know a score is fair? What does a sales rep need in the two seconds before answering an objection?</p>
+        <p>My job was to make an autonomous teammate feel predictable, accountable and easy to direct, for recruiters, sales leaders and managers who just need it to work.</p>
       </div>
     </section>
 
     <section class="cs-sec">
-      <h2 class="h3">What I designed</h2>
+      <h2 class="h3">My contributions</h2>
       <div class="body">
         <ul class="focus">
-          <li><h3 class="h3">Meeting intelligence</h3><p>Turning hours of calls into something a leader can act on.</p></li>
-          <li><h3 class="h3">AI-assisted hiring</h3><p>Interviews that are faster to run and fairer to compare.</p></li>
-          <li><h3 class="h3">Sales coaching</h3><p>Feedback that reaches a rep while the call can still change.</p></li>
+          <li><h3 class="h3">Setting up a teammate</h3><p>Giving an AI teammate its role, knowledge, tone and guardrails without code in Voice Studio, then testing it in practice calls before it meets real people.</p></li>
+          <li><h3 class="h3">The AI interviewer</h3><p>From identity check to a structured scorecard: an interview candidates can trust and recruiters can compare at a glance.</p></li>
+          <li><h3 class="h3">The meeting teammate</h3><p>Connect a calendar, invite the teammate, and get minutes, decisions and action items back when the call ends.</p></li>
+          <li><h3 class="h3">Live sales nudges</h3><p>A quiet panel beside the call that offers the next question or objection response, without pulling the rep out of the conversation.</p></li>
+          <li><h3 class="h3">Knowledge and platform</h3><p>HumAIn Brain, hyperspace and the developer APIs: where teams give the AI what it should know, control who sees it and watch how it performs.</p></li>
+          <li><h3 class="h3">Talk to Nia</h3><p>The live demo on the website. A short form, a fair waiting room, a real conversation with an AI teammate, and clear recovery when a session can’t connect.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cs-sec">
+      <h2 class="h3">How I design for agents</h2>
+      <div class="body">
+        <ul class="focus">
+          <li><h3 class="h3">Show what the AI is doing</h3><p>Clear states like joining, listening and preparing a report replace guesswork about what the agent is up to.</p></li>
+          <li><h3 class="h3">Keep people in charge</h3><p>An agent goes live only after someone approves it, and its behaviour stays editable afterwards.</p></li>
+          <li><h3 class="h3">Make the output traceable</h3><p>Scores, summaries and answers point back to where they came from, so people can check them before acting.</p></li>
+          <li><h3 class="h3">Design the failures too</h3><p>When an agent can’t join or a session drops, say what happened and offer the next step.</p></li>
         </ul>
       </div>
     </section>
@@ -694,39 +759,41 @@ img{max-width:100%;display:block}
     <section class="cs-sec">
       <h2 class="h3">A closer look</h2>
       <div class="body">
-        <div class="mock desk" id="mock-meet">
-          <div class="mock-bar"><i></i><i></i><i></i></div>
-          <div class="desk-grid">
-            <div class="transcript" role="list" aria-label="Sample conversation moments">
-              <button type="button" role="listitem" class="tr on" data-k="0"><span class="av"></span><span class="ln" style="width:78%"></span><span class="ln" style="width:52%"></span></button>
-              <button type="button" role="listitem" class="tr" data-k="1"><span class="av b"></span><span class="ln" style="width:64%"></span><span class="ln" style="width:70%"></span></button>
-              <button type="button" role="listitem" class="tr" data-k="2"><span class="av"></span><span class="ln" style="width:84%"></span><span class="ln" style="width:40%"></span></button>
-              <button type="button" role="listitem" class="tr" data-k="3"><span class="av b"></span><span class="ln" style="width:58%"></span><span class="ln" style="width:66%"></span></button>
+        <div class="mock agent" id="mock-agent">
+          <div class="mock-bar"><i></i><i></i><i></i><span class="ag-live" id="ag-state">Joining</span></div>
+          <div class="ag-grid">
+            <div class="ag-stage">
+              <div class="tile"><span class="face"></span><span class="nm">Candidate</span></div>
+              <div class="tile ai"><span class="face"><i class="ring"></i></span><span class="nm">AI teammate</span></div>
             </div>
-            <div class="insights">
-              <p class="mk-h">Insights</p>
-              <span class="chip on" data-k="0">Decision made</span>
-              <span class="chip" data-k="1">Open question</span>
-              <span class="chip" data-k="2">Action item</span>
-              <span class="chip" data-k="3">Risk flagged</span>
-              <div class="mini-wave" aria-hidden="true"><span class="play"></span></div>
+            <div class="ag-panel" aria-live="polite">
+              <div class="ag-p on" data-s="0"><p class="mk-h">Getting ready</p><p class="ck">Identity verified</p><p class="ck">Role and knowledge loaded</p><p class="ck pending">Joining the call</p></div>
+              <div class="ag-p" data-s="1"><p class="mk-h">Live transcript</p><span class="ln" style="width:90%"></span><span class="ln" style="width:70%"></span><span class="ln hl" style="width:82%"></span><span class="ln" style="width:56%"></span></div>
+              <div class="ag-p" data-s="2"><p class="mk-h">Suggested next question</p><div class="nudge"><span class="ln" style="width:92%"></span><span class="ln" style="width:64%"></span></div><p class="small muted">Shown only to the host</p></div>
+              <div class="ag-p" data-s="3"><p class="mk-h">Scorecard</p><div class="bar-row"><span>Communication</span><b style="--w:82%"></b></div><div class="bar-row"><span>Problem solving</span><b style="--w:68%"></b></div><div class="bar-row"><span>Ownership</span><b style="--w:74%"></b></div></div>
             </div>
           </div>
+          <div class="ag-steps" role="group" aria-label="Agent states">
+            <button type="button" aria-pressed="true" data-s="0">Join</button>
+            <button type="button" aria-pressed="false" data-s="1">Listen</button>
+            <button type="button" aria-pressed="false" data-s="2">Assist</button>
+            <button type="button" aria-pressed="false" data-s="3">Report</button>
+          </div>
         </div>
-        <p class="mock-cap">Illustrative recreation with placeholder content. Pick a moment in the conversation to see how it links to an insight.</p>
+        <p class="mock-cap">Illustrative recreation with placeholder content, not the shipped interface. Step through what an AI teammate does in an interview.</p>
       </div>
     </section>
 
     <section class="locked" aria-labelledby="lock-tg">
       <div class="locked-copy">
         <h2 class="h2" id="lock-tg">The rest is better in person</h2>
-        <p class="lede">Real screens, the research behind them and the results are under NDA. I’m happy to walk you through them in a 30-minute call.</p>
+        <p class="lede">The real screens, flows and research behind these experiences stay private. I’m happy to walk you through them in a 30-minute call.</p>
         <a class="btn" href="#/contact" data-walkthrough="TensorGo">Request a walkthrough</a>
       </div>
       <div class="redacted" aria-hidden="true">
-        <p>Research with <b style="width:5em"></b> enterprise users showed that <b style="width:9em"></b> mattered more than <b style="width:6em"></b>.</p>
-        <p>The first version <b style="width:11em"></b>, so we <b style="width:7em"></b>.</p>
-        <p>After launch, <b style="width:4em"></b> of teams <b style="width:10em"></b> within <b style="width:3em"></b> weeks.</p>
+        <p>Recruiters trusted the scorecard once we <b style="width:9em"></b>.</p>
+        <p>The hardest call was deciding when the AI should <b style="width:7em"></b>.</p>
+        <p>Setting up a new teammate went from <b style="width:4em"></b> to <b style="width:4em"></b>.</p>
       </div>
     </section>
 
@@ -992,6 +1059,7 @@ img{max-width:100%;display:block}
     document.title=(path==='/'?'Ram — Product designer for AI and B2B SaaS':v.dataset.title+' — Ram');
     window.scrollTo(0,0);
     current=path;
+    document.body.dataset.view=path;
     onScroll();
     document.dispatchEvent(new CustomEvent('viewchange',{detail:path}));
   }
@@ -1258,16 +1326,18 @@ img{max-width:100%;display:block}
     ttLive.textContent=solve?'Clashes resolved. Every class has its own slot.':'Timetable reset with 3 clashes.';
   });
 
-  /* ---------- Mock: meeting moments link to insights ---------- */
-  const meet=document.getElementById('mock-meet');
-  const trs=[...meet.querySelectorAll('.tr')],chips=[...meet.querySelectorAll('.chip')],play=meet.querySelector('.play');
-  function pickMoment(k){
-    trs.forEach(t=>t.classList.toggle('on',+t.dataset.k===k));
-    chips.forEach(c=>c.classList.toggle('on',+c.dataset.k===k));
-    play.style.left=(8+k*28)+'%';
-  }
-  trs.forEach(t=>t.addEventListener('click',()=>pickMoment(+t.dataset.k)));
-  pickMoment(0);
+  /* ---------- Mock: AI teammate states ---------- */
+  const agent=document.getElementById('mock-agent');
+  const agBtns=[...agent.querySelectorAll('.ag-steps button')],agPanes=[...agent.querySelectorAll('.ag-p')],agState=document.getElementById('ag-state');
+  const agNames=['Joining','Listening','Assisting','Report ready'];
+  agBtns.forEach(b=>b.addEventListener('click',()=>{
+    const k=+b.dataset.s;
+    agent.dataset.s=k;
+    agBtns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+    agPanes.forEach(p=>p.classList.toggle('on',+p.dataset.s===k));
+    agState.textContent=agNames[k];
+  }));
+  agent.dataset.s=0;
 
   /* ---------- Mock: hashtag filter ---------- */
   const news=document.getElementById('mock-news');
