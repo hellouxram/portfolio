@@ -7,7 +7,7 @@
 <meta name="description" content="Lakshmi Narayana (Ram) is a product designer in Hyderabad who designs generative AI and B2B SaaS products end to end.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gloock&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --paper:#F4F4F1;
@@ -16,14 +16,14 @@
   --rule:#D5D5CF;
   --blue:#2633E8;
   --blue-pale:#DDE0FF;
-  --serif:"Gloock", "Times New Roman", Georgia, serif;
-  --sans:"Figtree", "Helvetica Neue", Arial, sans-serif;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Geist", "Helvetica Neue", Arial, sans-serif;
   --pad:clamp(20px, 4vw, 56px);
   --max:1320px;
   --ease:cubic-bezier(.7,0,.3,1);
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.65 var(--sans);-webkit-font-smoothing:antialiased;font-optical-sizing:auto}
 h1,h2,h3,p{margin:0}
 a{color:inherit}
 img{max-width:100%;display:block}
@@ -36,7 +36,7 @@ img{max-width:100%;display:block}
 /* Header */
 .site-head{position:sticky;top:0;z-index:10;background:rgba(244,244,241,.9);backdrop-filter:blur(8px)}
 .site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-.mark{font:400 26px/1 var(--serif);text-decoration:none;letter-spacing:-.01em}
+.mark{font:500 28px/1 var(--serif);text-decoration:none;letter-spacing:-.01em}
 .nav{display:flex;gap:clamp(16px,3vw,36px)}
 .nav a{text-decoration:none;font-weight:500;font-size:15px;padding:6px 0;position:relative}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
@@ -59,9 +59,9 @@ img{max-width:100%;display:block}
 .view.is-active{display:block}
 
 /* Type scale */
-.display{font:400 clamp(48px, 9.2vw, 148px)/.94 var(--serif);letter-spacing:-.025em}
-.h2{font:400 clamp(36px, 5vw, 68px)/1 var(--serif);letter-spacing:-.02em}
-.h3{font:400 clamp(24px, 2.4vw, 32px)/1.15 var(--serif)}
+.display{font:500 clamp(48px, 9.2vw, 144px)/.98 var(--serif);letter-spacing:-.03em}
+.h2{font:500 clamp(36px, 5vw, 66px)/1.04 var(--serif);letter-spacing:-.02em}
+.h3{font:500 clamp(24px, 2.4vw, 32px)/1.2 var(--serif);letter-spacing:-.01em}
 .lede{font-size:clamp(19px,1.7vw,23px);line-height:1.5;max-width:34em}
 .muted{color:var(--graphite)}
 .small{font-size:14px}
@@ -96,7 +96,7 @@ img{max-width:100%;display:block}
 .work li::before{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1.5px;background:var(--blue);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
 .work li:hover::before,.work li:focus-within::before{transform:scaleX(1)}
 .work a{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto;gap:24px;align-items:baseline;padding:clamp(22px,3vw,36px) 0;text-decoration:none}
-.work .title{font:400 clamp(34px,5.4vw,84px)/1 var(--serif);letter-spacing:-.02em;transition:color .25s,transform .45s var(--ease);display:inline-block}
+.work .title{font:500 clamp(34px,5.4vw,82px)/1.02 var(--serif);letter-spacing:-.02em;transition:color .25s,transform .45s var(--ease);display:inline-block}
 .work .desc{color:var(--graphite);font-size:16px;max-width:30em}
 .work .go{font-weight:500;font-size:15px;white-space:nowrap}
 .work a:hover .title,.work a:focus-visible .title{color:var(--blue);transform:translateX(14px)}
@@ -156,7 +156,7 @@ img{max-width:100%;display:block}
 .about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px}
 .about-grid .side{grid-column:1 / span 4}
 .about-grid .main{grid-column:6 / span 7}
-.prose p{font-size:19px;line-height:1.65;max-width:36em}
+.prose p{font-size:19px;line-height:1.7;max-width:36em}
 .prose p+p{margin-top:1em}
 .block{padding:clamp(40px,5vw,64px) 0;border-top:1px solid var(--rule)}
 .about-hero + .block{border-top:1.5px solid var(--ink)}
@@ -939,9 +939,9 @@ img{max-width:100%;display:block}
       <circle cx="280" cy="115" r="18" fill="none" stroke="#F4F4F1" stroke-width="1.5"/>
       <circle r="4" fill="#F4F4F1"><animateMotion dur="2.4s" repeatCount="indefinite" path="M60 115H280"/></circle>
       <circle r="4" fill="#5B66FF"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M280 115H60"/></circle>
-      <text x="60" y="160" fill="#F4F4F1" fill-opacity=".6" font-size="12" text-anchor="middle" font-family="Figtree, Arial">Business</text>
-      <text x="170" y="160" fill="#F4F4F1" fill-opacity=".6" font-size="12" text-anchor="middle" font-family="Figtree, Arial">App</text>
-      <text x="280" y="160" fill="#F4F4F1" fill-opacity=".6" font-size="12" text-anchor="middle" font-family="Figtree, Arial">Customer</text>
+      <text x="60" y="160" fill="#F4F4F1" fill-opacity=".6" font-size="12" text-anchor="middle" font-family="Geist, Arial">Business</text>
+      <text x="170" y="160" fill="#F4F4F1" fill-opacity=".6" font-size="12" text-anchor="middle" font-family="Geist, Arial">App</text>
+      <text x="280" y="160" fill="#F4F4F1" fill-opacity=".6" font-size="12" text-anchor="middle" font-family="Geist, Arial">Customer</text>
     </svg>
     <span class="cap">B2B2C shopping</span>
   </div>
