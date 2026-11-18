@@ -122,7 +122,7 @@ img{max-width:100%;display:block}
 @keyframes ping{from{transform:scale(.6);opacity:1}to{transform:scale(2.4);opacity:0}}
 
 /* Approach: interactive tabs-like hover on desktop */
-.approach{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,56px)}
+.approach{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(40px,5vw,72px) clamp(32px,6vw,96px)}
 .approach > div{padding-top:20px;border-top:1.5px solid var(--rule);transition:border-color .4s}
 .approach > div:hover{border-color:var(--blue)}
 .approach svg{width:56px;height:56px;margin-bottom:18px;overflow:visible}
@@ -132,7 +132,11 @@ img{max-width:100%;display:block}
 .approach > div:hover .g2a{transform:translate(9px,0)}
 .approach > div:hover .g2b{transform:translate(-9px,0)}
 .approach > div:hover .g3{transform:scale(.45)}
-.g3{transform-box:fill-box;transform-origin:center}
+.approach > div:hover .g4{transform:translate(40px,-22px)}
+.g5a,.g5b{transition:opacity .5s var(--ease)!important}
+.g5b{opacity:0}
+.approach > div:hover .g5a{opacity:0}
+.approach > div:hover .g5b{opacity:1}
 
 /* Statement with scroll-lit words */
 .statement{padding:clamp(56px,8vw,112px) 0;border-top:1.5px solid var(--ink)}
@@ -428,7 +432,7 @@ img{max-width:100%;display:block}
         </div>
       </div>
     </div>
-    <p class="hint" aria-hidden="true">Move your cursor to bring order to the noise</p>
+    <p class="hint" aria-hidden="true">Move your cursor to turn noise into flow</p>
   </div>
 
   <div class="wrap sec" id="work">
@@ -464,26 +468,31 @@ img{max-width:100%;display:block}
     <div class="sec-head"><h2 class="h2">How I work</h2></div>
     <div class="approach">
       <div>
+        <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><path d="M2 36H54" stroke="#D5D5CF" stroke-width="2" fill="none"/><path d="M18 36C30 36 32 14 54 14" stroke="#15161A" stroke-width="2" fill="none"/><circle class="g4" cx="8" cy="36" r="6" fill="#2633E8"/></svg>
+        <h3 class="h3">My own route</h3>
+        <p>I don’t start from the nearest template. I go back to what the problem really is and design the answer it needs, even when that looks different from what’s already out there.</p>
+      </div>
+      <div>
+        <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><path class="g5a" d="M2 28L10 14L18 42L26 12L34 40L42 18L54 28" stroke="#15161A" stroke-width="2" fill="none" stroke-linejoin="round"/><path class="g5b" d="M2 28H54" stroke="#2633E8" stroke-width="3" fill="none"/></svg>
+        <h3 class="h3">Untangle first</h3>
+        <p>Rule-heavy workflows, edge cases, systems nobody fully understands. I map them, find where people get stuck, and keep simplifying until the screen feels obvious.</p>
+      </div>
+      <div>
         <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><line x1="2" y1="28" x2="54" y2="28" stroke="#D5D5CF" stroke-width="2"/><circle class="g1" cx="10" cy="28" r="8" fill="#2633E8"/><circle cx="46" cy="28" r="8" fill="none" stroke="#15161A" stroke-width="2"/></svg>
-        <h3 class="h3">Start to finish</h3>
-        <p>I own the whole arc: framing the problem, mapping flows, prototyping, and staying close through build so what ships matches what we designed.</p>
+        <h3 class="h3">Built for what’s next</h3>
+        <p>I design AI experiences people can trust, and I prototype in React so ideas get tested as working things before engineering builds them.</p>
       </div>
       <div>
         <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><circle class="g2a" cx="17" cy="28" r="14" fill="none" stroke="#15161A" stroke-width="2"/><circle class="g2b" cx="39" cy="28" r="14" fill="#2633E8" fill-opacity=".85"/></svg>
-        <h3 class="h3">With the whole team</h3>
-        <p>I sit with PMs, engineers and stakeholders early. Machine learning capabilities only become useful once the people building them and the people using them agree on what “good” looks like.</p>
-      </div>
-      <div>
-        <svg class="glyph" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="24" fill="none" stroke="#D5D5CF" stroke-width="2"/><circle cx="28" cy="28" r="14" fill="none" stroke="#15161A" stroke-width="2"/><circle class="g3" cx="28" cy="28" r="6" fill="#2633E8"/></svg>
-        <h3 class="h3">Grounded in users</h3>
-        <p>Research and usability testing come before polish. Real feedback decides what stays, what changes and what gets cut.</p>
+        <h3 class="h3">People on the other end</h3>
+        <p>Admins, students, recruiters, shoppers. I test with real users early and let what they actually do, not what we assume, decide what stays.</p>
       </div>
     </div>
   </div>
 
   <div class="wrap">
     <div class="statement">
-      <p id="statement">Designer at heart, entrepreneur by mindset. I care about whether the product works for the business as much as whether it looks right.</p>
+      <p id="statement">Designer at heart, entrepreneur by mindset. I take my own route to a problem, untangle it until it feels simple, and keep the people on the other end in mind the whole way.</p>
     </div>
   </div>
 </section>
@@ -514,6 +523,14 @@ img{max-width:100%;display:block}
           <li><button aria-expanded="false">Solve it together<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>The best answers come from working closely with PMs, engineers and the people using the product.</p></div></div></li>
           <li><button aria-expanded="false">Design for everyone<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>Accessible, inclusive work isn’t a final checklist. It shapes the design from the start.</p></div></div></li>
         </ul>
+      </div>
+    </div>
+
+    <div class="block about-grid">
+      <h2 class="h3 side">How I’m wired</h2>
+      <div class="main prose">
+        <p>I’m an Aquarian, and it probably shows. I’d rather find my own way to a solution than copy the obvious one. When a system confuses people, I get curious about why, and I keep pulling at it until it makes sense.</p>
+        <p>I’m always looking at what’s next, especially in AI. But the question I come back to is simple: is this fair and useful for the person using it?</p>
       </div>
     </div>
 
@@ -1053,7 +1070,8 @@ img{max-width:100%;display:block}
       if(order>target)target=order;
       s.v+=(target-s.v)*(reduce?1:.07);
       const chaos=s.s+Math.sin(t*.0005+s.x*.012)*1.1+Math.cos(t*.0004+s.y*.015)*1.1;
-      const a=chaos*(1-s.v);
+      const wave=Math.atan(Math.cos(s.x*.016+s.y*.004+t*.0007)*.85);
+      const a=chaos*(1-s.v)+wave*s.v;
       const L=7+5*s.v;
       const c=Math.cos(a)*L,sn=Math.sin(a)*L;
       const k=s.v;
