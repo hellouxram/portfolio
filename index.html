@@ -85,39 +85,21 @@ img{max-width:100%;display:block}
 
 /* Home hero with signal field */
 .hero{padding:clamp(40px,7vw,104px) 0 clamp(48px,7vw,96px)}
-.hero-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:center}
-.hero-text{grid-column:1 / span 7}
-.hello{font-size:clamp(17px,1.5vw,20px);color:var(--graphite);margin-bottom:20px}
-.hero .display{font-size:clamp(44px,6.6vw,108px)}
+.hello{font-size:clamp(17px,1.5vw,20px);color:var(--graphite);margin-bottom:24px}
+.hero .display{font-size:clamp(46px,8.4vw,132px)}
 .hero .display span{display:block}
-.hero .lede{margin-top:28px;max-width:30em}
-.hero-photo{grid-column:9 / span 4;margin:0}
-.hp-frame{position:relative}
-.hp-frame img{position:relative;display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#E8E8E4;transition:transform .6s var(--ease)}
-.hp-block{position:absolute;inset:0;background:var(--blue);transform:translate(18px,18px);transition:transform .6s var(--ease)}
-.hero-photo figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:34px;font-size:15px}
+.hero-foot{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:clamp(40px,5vw,64px);align-items:start}
+.hero-intro{grid-column:1 / span 6}
+.hero-side{grid-column:8 / span 5;align-self:end}
+.hero-side .hero-status{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--rule);font-size:15px}
 @media (prefers-reduced-motion:no-preference){
-  .view.is-active .hp-frame img{animation:unveil 1.1s .25s cubic-bezier(.7,0,.3,1) both}
-  .view.is-active .hp-block{animation:slideIn 1s .55s cubic-bezier(.2,.7,.2,1) both}
-  @keyframes unveil{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
-  @keyframes slideIn{from{transform:translate(0,0);opacity:0}}
+  .view.is-active .hero-foot{animation:rise .9s .35s cubic-bezier(.2,.7,.2,1) both}
 }
-@media (max-width:900px){
-  .hero-text,.hero-photo{grid-column:1 / -1}
-  .hero-photo{order:-1;display:grid;grid-template-columns:132px 1fr;gap:28px;align-items:end;margin-bottom:28px}
-  .hp-block{transform:translate(10px,10px)}
-  .hero-photo figcaption{flex-direction:column;justify-content:flex-end;gap:6px;margin-top:0}
-}
+@media (max-width:900px){.hero-intro,.hero-side{grid-column:1 / -1}.hero-side{margin-top:16px}}
 .hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-top:28px}
 .hero-actions .btn{display:inline-block;text-decoration:none}
 .text-link{font-weight:500;text-decoration:none;background:linear-gradient(currentColor,currentColor) left bottom/100% 1.5px no-repeat,var(--paper);padding:4px 0;transition:color .25s,background-size .35s var(--ease)}
 .text-link:hover{color:var(--blue)}
-.proof{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);font-size:15px;max-width:34em}
-.proof p{display:grid;grid-template-columns:4.5em 1fr;gap:12px;line-height:1.5}
-.proof p+p{margin-top:6px}
-.proof .pl{color:var(--graphite)}
-.proof a{font-weight:500;text-decoration:none;background:linear-gradient(currentColor,currentColor) left bottom/0 1.5px no-repeat;transition:color .25s,background-size .35s var(--ease)}
-.proof a:hover,.proof a:focus-visible{color:var(--blue);background-size:100% 1.5px}
 .status{display:inline-flex;align-items:center;gap:10px}
 .status::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 0 rgba(38,51,232,.5);animation:pulse 2.4s infinite}
 @keyframes pulse{70%{box-shadow:0 0 0 10px rgba(38,51,232,0)}100%{box-shadow:0 0 0 0 rgba(38,51,232,0)}}
@@ -499,28 +481,25 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
 <!-- ============ HOME ============ -->
 <section class="view" data-view="/" data-title="Work" aria-label="Home">
   <div class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-text">
-        <p class="hello">Hi, I’m Ram, a product designer at EDTEX.</p>
-        <h1 class="display reveal">
-          <span>I make complex</span>
-          <span>AI products feel</span>
-          <span>obvious to use.</span>
-        </h1>
-        <p class="lede">I design AI and B2B SaaS products end to end, from a rough idea to shipped screens, alongside PMs and engineers.</p>
-        <div class="hero-actions">
+    <div class="wrap">
+      <p class="hello">Hi, I’m Ram, a product designer at EDTEX.</p>
+      <h1 class="display reveal">
+        <span>I make complex AI</span>
+        <span>products feel</span>
+        <span>obvious to use.</span>
+      </h1>
+      <div class="hero-foot">
+        <div class="hero-intro">
+          <p class="lede">Curious about complicated systems, stubborn about making them simple. I design AI and B2B SaaS products end to end.</p>
+          <div class="hero-actions">
             <a class="btn" href="https://docs.google.com/document/d/1Sc3sbxYGGqwi3iZfQYUGyuxUsYzp4m0X0vy1gX-DIkg/edit?usp=sharing" target="_blank" rel="noopener">View resume</a>
             <a class="text-link" href="https://www.linkedin.com/in/uxram/" target="_blank" rel="noopener">Connect on LinkedIn</a>
           </div>
-        <div class="proof">
-            <p><span class="pl">Now</span><span><a href="#/work/edtex">EDTEX</a>, AI software used by 35+ institutions including IIMs and ISB</span></p>
-            <p><span class="pl">Before</span><span><a href="#/work/tensorgo">TensorGo</a>, <a href="#/work/gugla">Gugla News</a> and <a href="#/work/meebuddy">MeeBuddy</a></span></p>
-          </div>
+        </div>
+        <div class="hero-side">
+          <p class="hero-status"><span class="status">Open to new projects</span><span class="muted">Hyderabad, <span id="clock">India</span></span></p>
+        </div>
       </div>
-      <figure class="hero-photo">
-        <div class="hp-frame"><span class="hp-block" aria-hidden="true"></span><img src="ram.jpg" width="800" height="1000" alt="Portrait of Ram, smiling, in a navy blazer" fetchpriority="high"></div>
-        <figcaption><span class="status">Open to new projects</span><span class="muted">Hyderabad, <span id="clock">India</span></span></figcaption>
-      </figure>
     </div>
   </div>
 
@@ -1148,19 +1127,6 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
   const fmt=new Intl.DateTimeFormat('en-IN',{timeZone:'Asia/Kolkata',hour:'2-digit',minute:'2-digit',hour12:false});
   function tick(){clock.textContent=fmt.format(new Date())+' IST';}
   tick(); setInterval(tick,15000);
-
-  /* ---------- Hero: portrait drifts gently with the cursor ---------- */
-  const hero=document.querySelector('.hero');
-  const hpImg=hero.querySelector('.hp-frame img'),hpBlock=hero.querySelector('.hp-block');
-  if(finePointer&&!reduce){
-    hero.addEventListener('pointermove',e=>{
-      const r=hero.getBoundingClientRect();
-      const dx=(e.clientX-r.left)/r.width-.5,dy=(e.clientY-r.top)/r.height-.5;
-      hpImg.style.transform='translate('+(-dx*10)+'px,'+(-dy*10)+'px)';
-      hpBlock.style.transform='translate('+(18+dx*16)+'px,'+(18+dy*16)+'px)';
-    });
-    hero.addEventListener('pointerleave',()=>{hpImg.style.transform='';hpBlock.style.transform='';});
-  }
 
   /* ---------- Project previews follow the cursor ---------- */
   const pv=document.querySelector('.preview');
