@@ -85,6 +85,15 @@ img{max-width:100%;display:block}
 
 /* Home hero with signal field */
 .hero{padding:clamp(40px,7vw,104px) 0 clamp(48px,7vw,96px)}
+.hero{position:relative;min-height:calc(100svh - 72px);display:flex;flex-direction:column;justify-content:center;padding:clamp(48px,7vw,96px) 0;overflow:hidden}
+.field{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .wrap{position:relative;z-index:1;width:100%;pointer-events:none}
+.hero .wrap a,.hero .wrap button{pointer-events:auto}
+.hero .display span{width:max-content;max-width:100%;background:linear-gradient(var(--paper),var(--paper)) left 58%/100% 74% no-repeat}
+.hello,.hero .lede{width:fit-content;background:var(--paper);padding-right:8px}
+.hero-status{background:var(--paper)}
+.hint{position:absolute;right:var(--pad);bottom:24px;z-index:1;font-size:14px;color:var(--graphite);background:var(--paper);padding:2px 6px}
+@media (max-width:900px){.hint{display:none}.hero{min-height:auto}}
 .hello{font-size:clamp(17px,1.5vw,20px);color:var(--graphite);margin-bottom:24px}
 .hero .display{font-size:clamp(46px,8.4vw,132px)}
 .hero .display span{display:block}
@@ -481,6 +490,7 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
 <!-- ============ HOME ============ -->
 <section class="view" data-view="/" data-title="Work" aria-label="Home">
   <div class="hero">
+    <canvas class="field" aria-hidden="true"></canvas>
     <div class="wrap">
       <p class="hello">Hi, I’m Ram, a product designer at EDTEX.</p>
       <h1 class="display reveal">
@@ -501,6 +511,7 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
         </div>
       </div>
     </div>
+    <p class="hint" aria-hidden="true">Move your cursor to turn noise into flow</p>
   </div>
 
   <div class="wrap sec" id="work">
@@ -1128,6 +1139,53 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
   function tick(){clock.textContent=fmt.format(new Date())+' IST';}
   tick(); setInterval(tick,15000);
 
+  /* ---------- Hero: noise to signal field ---------- */
+  const hero=document.querySelector('.hero');
+  const cv=hero.querySelector('.field');
+  const ctx=cv.getContext('2d');
+  let W=0,H=0,segs=[],mouse={x:-1e4,y:-1e4,last:-1e9},heroOn=true,raf=null;
+  const GAP=26;
+  function build(){
+    const dpr=Math.min(devicePixelRatio||1,2);
+    W=cv.clientWidth;H=cv.clientHeight;
+    cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    segs=[];
+    for(let y=GAP/2;y<H;y+=GAP)for(let x=GAP/2;x<W;x+=GAP)
+      segs.push({x,y,s:Math.random()*Math.PI*2,v:0});
+  }
+  hero.addEventListener('pointermove',e=>{
+    const r=cv.getBoundingClientRect();
+    mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top;mouse.last=performance.now();
+  });
+  hero.addEventListener('pointerleave',()=>{mouse.x=-1e4;mouse.y=-1e4;});
+  function frame(t){
+    ctx.clearRect(0,0,W,H);
+    // when the visitor isn't steering, a slow lens drifts on its own
+    let lx=mouse.x,ly=mouse.y;
+    if(t-mouse.last>2500){lx=W*(.62+.28*Math.sin(t*.00035));ly=H*(.5+.32*Math.sin(t*.00052+1));}
+    const R=Math.max(150,Math.min(W,H)*.26);
+    const order=Math.min(1,Math.max(0,scrollY/(H*.7)));
+    ctx.lineWidth=1.4;ctx.lineCap='round';
+    for(const s of segs){
+      const dx=s.x-lx,dy=s.y-ly,d=Math.sqrt(dx*dx+dy*dy);
+      let target=d<R?1-(d/R)*(d/R):0;
+      if(order>target)target=order;
+      s.v+=(target-s.v)*(reduce?1:.07);
+      const chaos=s.s+Math.sin(t*.0005+s.x*.012)*1.1+Math.cos(t*.0004+s.y*.015)*1.1;
+      const wave=Math.atan(Math.cos(s.x*.016+s.y*.004+t*.0007)*.85);
+      const a=chaos*(1-s.v)+wave*s.v;
+      const L=7+5*s.v;
+      const c=Math.cos(a)*L,sn=Math.sin(a)*L;
+      const k=s.v;
+      ctx.strokeStyle='rgba('+Math.round(196+(38-196)*k)+','+Math.round(197+(51-197)*k)+','+Math.round(191+(232-191)*k)+','+(.75+.25*k)+')';
+      ctx.beginPath();ctx.moveTo(s.x-c,s.y-sn);ctx.lineTo(s.x+c,s.y+sn);ctx.stroke();
+    }
+    if(!reduce&&heroOn&&current==='/') raf=requestAnimationFrame(frame); else raf=null;
+  }
+  function startHero(){ if(!raf&&!reduce&&heroOn&&current==='/') raf=requestAnimationFrame(frame); }
+  new IntersectionObserver(es=>{heroOn=es[0].isIntersecting;startHero();}).observe(hero);
+  addEventListener('resize',()=>{build();if(reduce)frame(0);});
+
   /* ---------- Project previews follow the cursor ---------- */
   const pv=document.querySelector('.preview');
   const pvs=[...pv.querySelectorAll('.pv')];
@@ -1354,6 +1412,7 @@ body[data-view="/work/tensorgo"] .site-head{background:rgba(0,0,0,.85);color:#EC
 
   document.addEventListener('viewchange',e=>{
     const path=e.detail;
+    if(path==='/'){build();if(reduce)frame(0);else startHero();}
     plates.forEach(p=>{if(p.view===path){sizeP(p);if(!p.raf)drawP(p,reduce?4000:performance.now());}});
     nums.forEach(n=>{
       if(n.closest('.view').dataset.view!==path)return;
